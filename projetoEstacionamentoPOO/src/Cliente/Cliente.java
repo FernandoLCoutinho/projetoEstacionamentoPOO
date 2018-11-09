@@ -5,7 +5,7 @@
  */
 package Cliente;
 
-import java.util.Date;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -18,7 +18,7 @@ public class Cliente {
     private String email;
     private String telefone;
     private Integer id;
-    private Date datanascimento;
+    private SimpleDateFormat datanascimento;
     private String celular;
     private String cep;
     
@@ -38,11 +38,11 @@ public class Cliente {
         this.nome = nome;
     }
     
-     public Date getDataNascimento() {
+     public SimpleDateFormat getDataNascimento() {
         return datanascimento;
     }
 
-    public void setDataNascimento(Date datanascimento) {
+    public void setDataNascimento(SimpleDateFormat datanascimento) {
         this.datanascimento = datanascimento;
     }
     

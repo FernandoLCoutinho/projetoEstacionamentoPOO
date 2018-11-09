@@ -9,31 +9,9 @@ package Veiculos;
  *
  * @author murilo.aaraujo
  */
-public class Carro {
-    private String placa;
-    private String modelo;
+public class Carro extends VeiculoGeral{
     private String chassi;
     private String marca;
-    private String cor;
-    
-    
-    
-    public String getPlaca() {
-        return placa;
-    }
-
-    public void setPlaca(String placa) {
-        this.placa = placa;
-    }
-    
-    
-    public String getModelo() {
-        return modelo;
-    }
-
-    public void setModelo(String modelo) {
-        this.modelo = modelo;
-    }
     
     public String getChassi(){
         return chassi;
@@ -51,11 +29,4 @@ public class Carro {
         this.marca = marca;
     }
     
-    public String getCor(){
-        return cor;
-    }
-    
-    public void setCor(String cor){
-        this.cor = cor;
-    }
 }
