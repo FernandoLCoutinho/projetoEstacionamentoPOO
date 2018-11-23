@@ -8,6 +8,7 @@ package DAOs;
 import Util.ConnectionUtils;
 import Veiculos.Carro;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
@@ -18,9 +19,10 @@ import java.sql.SQLException;
 public class CarroDAO {
 
     public void inserir(Carro carro) throws SQLException, Exception {
-        String sql = "INSERT INTO carro(placa, modelo, chassi, marca, cor) VALUES (?,?,?,?,?)";
+        String sql = "INSERT INTO carro(placa, modelo, chassi, marca, cor,dataentrada,datasaida) VALUES (?,?,?,?,?,?,?)";
         Connection con = null;
         PreparedStatement preparedStatement = null;
+        long millis=System.currentTimeMillis();
         try {
             con = ConnectionUtils.getConnection();
             preparedStatement = con.prepareStatement(sql);
@@ -29,6 +31,8 @@ public class CarroDAO {
             preparedStatement.setString(3, carro.getChassi());
             preparedStatement.setString(4, carro.getMarca());
             preparedStatement.setString(6, carro.getCor());
+            preparedStatement.setDate(7, new Date(millis));
+            preparedStatement.setDate(8, new Date(0,0,0000));
             preparedStatement.execute();
         } finally {
             if (preparedStatement != null && !preparedStatement.isClosed()) {

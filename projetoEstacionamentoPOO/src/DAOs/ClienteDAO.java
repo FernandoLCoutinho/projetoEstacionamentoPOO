@@ -22,7 +22,8 @@ public class ClienteDAO {
         String sql = "INSERT INTO `cliente`(`cpf`,`endereco`,`nome`,`email`,`telefone`,`id`,`datanascimento`,`celular`,`cep`) VALUES (?,?,?,?,?,?,?,?,?)";
         Connection con = null;
         PreparedStatement prep = null;
-        
+                         
+                
         con = ConnectionUtils.getConnection();
         prep = con.prepareStatement(sql);
         prep.setString(1, c.getCpf());
@@ -31,7 +32,7 @@ public class ClienteDAO {
         prep.setString(4, c.getEmail());
         prep.setString(5, c.getTelefone());
         prep.setInt(6, c.getId());
-        //prep.setDate(7, c.getDataNascimento());
+        prep.setDate(7,c.getDataNascimento());
         prep.setString(8, c.getCelular());
         prep.setString(9, c.getCep());
         System.out.println(prep);
