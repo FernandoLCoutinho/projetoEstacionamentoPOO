@@ -10,16 +10,9 @@ package Veiculos;
  * @author murilo.aaraujo
  */
 public class Carro extends VeiculoGeral{
-    private String chassi;
+    
     private String marca;
-    
-    public String getChassi(){
-        return chassi;
-    }
-    
-    public void setChassi(String chassi){
-        this.chassi = chassi;
-    }
+    private String porte;
     
     public String getMarca(){
         return marca;
@@ -29,4 +22,11 @@ public class Carro extends VeiculoGeral{
         this.marca = marca;
     }
     
+    public String getPorte(){
+        return porte;
+    }
+    
+    public void setPorte(String porte){
+        this.porte = porte;
+    }
 }

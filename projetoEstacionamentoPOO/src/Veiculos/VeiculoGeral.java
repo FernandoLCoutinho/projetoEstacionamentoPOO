@@ -13,7 +13,7 @@ public class VeiculoGeral {
     private String placa;
     private String cor;
     private String modelo;
-    //private String aro;
+    
     public String getPlaca() {
         return placa;
     }

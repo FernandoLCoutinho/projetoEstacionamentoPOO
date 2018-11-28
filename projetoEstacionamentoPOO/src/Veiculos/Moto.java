@@ -11,7 +11,7 @@ package Veiculos;
  */
 public class Moto extends VeiculoGeral{
     String marca;
-    String chassi;
+    
 
     public String getMarca() {
         return marca;
@@ -20,14 +20,4 @@ public class Moto extends VeiculoGeral{
     public void setMarca(String marca) {
         this.marca = marca;
     }
-
-    public String getChassi() {
-        return chassi;
-    }
-
-    public void setChassi(String chassi) {
-        this.chassi = chassi;
-    }
-    
-    
 }
