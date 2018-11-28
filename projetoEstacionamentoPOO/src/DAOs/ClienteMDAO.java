@@ -11,7 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import Util.ConnectionUtils;
 import Veiculos.Carro;
-import java.sql.Date;
+import java.sql.Timestamp;
 
 /**
  *
@@ -20,7 +20,7 @@ import java.sql.Date;
 public class ClienteMDAO {
     
     public void inserir(ClienteM c) throws SQLException, Exception{
-        String sql = "INSERT INTO `cliente`(`cpf`,`endereco`,`nome`,`email`,`telefone`,`datanascimento`,`celular`,`cep`) VALUES (?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO `cliente`(`cpf`,`endereco`,`nome`,`email`,`telefone`,`entrada`,`celular`,`cep`) VALUES (?,?,?,?,?,?,?,?,?)";
         Connection con = null;
         PreparedStatement prep = null;
                          
@@ -32,25 +32,27 @@ public class ClienteMDAO {
         prep.setString(3, c.getNome());
         prep.setString(4, c.getEmail());
         prep.setString(5, c.getTelefone());
-        prep.setDate(6,c.getDataNascimento());
+        prep.setTimestamp(6,c.getEntrada());
         prep.setString(7, c.getCelular());
         prep.setString(8, c.getCep());
         System.out.println(prep);
     }
     public void atualizar(Carro carro, ClienteM cliente) throws SQLException, Exception {
-        String sql = "UPDATE Cliente SET endereco=?, nome=?, email=?,telefone=?,datanascimento=?,celular=?,cep=?"
+        String sql = "UPDATE Cliente SET endereco=?, nome=?, email=?,telefone=?,entrada=?,saida=?,celular=?,cep=?"
                 + "WHERE (cpf=?)";
         Connection con = null;
         PreparedStatement prep = null;
         try {
             con = ConnectionUtils.getConnection();
             prep = con.prepareStatement(sql);
-            prep.setString(1, cliente.getNome());
-            prep.setString(2, cliente.getEmail());
-            prep.setString(3, cliente.getTelefone());
-            prep.setDate(4, cliente.getDataNascimento());
-            prep.setString(5, cliente.getCelular());
-            prep.setString(6, cliente.getCep());
+            prep.setString(1, cliente.getEndereco());
+            prep.setString(2, cliente.getNome());
+            prep.setString(3, cliente.getEmail());
+            prep.setString(4, cliente.getTelefone());
+            prep.setTimestamp(5, cliente.getEntrada());
+            prep.setTimestamp(6, cliente.getSaida());
+            prep.setString(7, cliente.getCelular());
+            prep.setString(8, cliente.getCep());
         } finally {
             if (prep != null && !prep.isClosed()) {
                 prep.close();

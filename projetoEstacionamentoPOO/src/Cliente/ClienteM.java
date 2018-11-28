@@ -5,28 +5,23 @@
  */
 package Cliente;
 
-import java.sql.Date;
+
 
 /**
  *
- * @author ADRIANA
+ * @author murilo.aaraujo
  */
-public class ClienteM extends Cliente{
+public class ClienteM extends Cliente {
+
     private String cpf;
     private String endereco;
     private String email;
-    private Date datanascimento;
     private String celular;
     private String cep;
-    
-     public Date getDataNascimento() {
-        return datanascimento;
-    }
+    private boolean ativo;
 
-    public void setDataNascimento(Date datanascimento) {
-        this.datanascimento = datanascimento;
-    }
     
+
     public String getCpf() {
         return cpf;
     }
@@ -34,7 +29,7 @@ public class ClienteM extends Cliente{
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
-    
+
     public String getCep() {
         return cep;
     }
@@ -42,7 +37,7 @@ public class ClienteM extends Cliente{
     public void setCep(String cep) {
         this.cep = cep;
     }
-    
+
     public String getCelular() {
         return celular;
     }
@@ -50,7 +45,7 @@ public class ClienteM extends Cliente{
     public void setCelular(String celular) {
         this.celular = celular;
     }
-    
+
     public String getEmail() {
         return email;
     }
@@ -58,12 +53,20 @@ public class ClienteM extends Cliente{
     public void setEmail(String email) {
         this.email = email;
     }
-    
-    public String getEndereco(){
+
+    public String getEndereco() {
         return endereco;
     }
-    
-    public void setEndereco(String endereco){
+
+    public void setEndereco(String endereco) {
         this.endereco = endereco;
+    }
+
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
     }
 }

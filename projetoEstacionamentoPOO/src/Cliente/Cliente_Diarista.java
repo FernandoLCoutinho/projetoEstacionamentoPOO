@@ -7,8 +7,36 @@ package Cliente;
 
 /**
  *
- * @author ADRIANA
+ * @author murilo.aaraujo
  */
-public class Cliente_Diarista extends Cliente{
-    
+public class Cliente_Diarista extends Cliente {
+
+    private String cpf;
+    private String celular;
+    private String cep;
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getCelular() {
+        return celular;
+    }
+
+    public void setCelular(String celular) {
+        this.celular = celular;
+    }
+
+    public String getCep() {
+        return cep;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
+
 }
