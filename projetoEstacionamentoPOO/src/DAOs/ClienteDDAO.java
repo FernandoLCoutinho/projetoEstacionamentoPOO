@@ -48,6 +48,8 @@ public class ClienteDDAO {
             con = ConnectionUtils.getConnection();
             prep = con.prepareStatement(sql);
             prep.setString(1, cliente.getTelefone());
+            prep.setString(2, cliente.getCpf());
+            prep.executeUpdate();
         } finally {
             if (prep != null && !prep.isClosed()) {
                 prep.close();

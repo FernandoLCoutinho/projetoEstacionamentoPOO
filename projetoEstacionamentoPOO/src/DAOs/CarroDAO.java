@@ -45,25 +45,27 @@ public class CarroDAO {
         }
     }
 
-    public static void atualizar(Carro carro, Cliente cliente) throws SQLException, Exception {
-        String sql = "UPDATE Veiculo SET modelo=?, marca=?, cor=?, porte=?"
-                + "WHERE (placa=?)";
-        Connection con = null;
-        PreparedStatement prep = null;
-        try {
-            con = ConnectionUtils.getConnection();
-            prep = con.prepareStatement(sql);
-            prep.setString(1, carro.getModelo());
-            prep.setString(2, carro.getMarca());
-            prep.setString(3, carro.getCor());
-            prep.setString(4, carro.getPorte());
-        } finally {
-            if (prep != null && !prep.isClosed()) {
-                prep.close();
-            }
-            if (con != null && !con.isClosed()) {
-                con.close();
-            }
-        }
-    } 
+//    public static void atualizar(Carro carro, Cliente cliente) throws SQLException, Exception {
+//        String sql = "UPDATE Veiculo SET modelo=?, marca=?, cor=?, porte=?"
+//                + "WHERE (placa=?)";
+//        Connection con = null;
+//        PreparedStatement prep = null;
+//        try {
+//            con = ConnectionUtils.getConnection();
+//            prep = con.prepareStatement(sql);
+//            prep.setString(1, carro.getModelo());
+//            prep.setString(2, carro.getMarca());
+//            prep.setString(3, carro.getCor());
+//            prep.setString(4, carro.getPorte());
+//        } finally {
+//            if (prep != null && !prep.isClosed()) {
+//                prep.close();
+//            }
+//            if (con != null && !con.isClosed()) {
+//                con.close();
+//            }
+//        }
+//    } 
+    
+    
 }

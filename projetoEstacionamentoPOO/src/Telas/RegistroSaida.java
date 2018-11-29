@@ -5,6 +5,8 @@
  */
 package Telas;
 
+import Veiculos.Carro;
+
 /**
  *
  * @author murilo.aaraujo
@@ -17,7 +19,7 @@ public class RegistroSaida extends javax.swing.JFrame {
     public RegistroSaida() {
         initComponents();
     }
-
+    Carro carro = new Carro();
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -141,7 +143,7 @@ public class RegistroSaida extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoCancelarActionPerformed
 
     private void botaoRegistrarSaidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoRegistrarSaidaActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_botaoRegistrarSaidaActionPerformed
 
     /**
