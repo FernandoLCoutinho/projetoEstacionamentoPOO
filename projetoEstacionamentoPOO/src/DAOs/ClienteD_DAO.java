@@ -5,7 +5,7 @@
  */
 package DAOs;
 
-import Cliente.ClienteM;
+import Cliente.Cliente_Diarista;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -16,42 +16,38 @@ import Veiculos.Carro;
  *
  * @author fernando.lcoutinho
  */
-public class ClienteMDAO {
+public class ClienteD_DAO {
 
-    public void inserir(ClienteM c) throws SQLException, Exception {
-        String sql = "INSERT INTO `cliente`(`cpf`,`endereco`,`nome`,`email`,`telefone`,`entrada`,`celular`,`cep`) VALUES (?,?,?,?,?,?,?,?,?)";
+    public void inserir(Cliente_Diarista c) throws SQLException, Exception {
+        String sql = "INSERT INTO `cliente`(`cpf`,`nome`,`telefone`,`entrada`,`celular`,`cep`) VALUES (?,?,?,?,?,?,?)";
         Connection con = null;
         PreparedStatement prep = null;
 
         con = ConnectionUtils.getConnection();
         prep = con.prepareStatement(sql);
         prep.setString(1, c.getCpf());
-        prep.setString(2, c.getEndereco());
-        prep.setString(3, c.getNome());
-        prep.setString(4, c.getEmail());
-        prep.setString(5, c.getTelefone());
-        prep.setTimestamp(6, c.getEntrada());
-        prep.setString(7, c.getCelular());
-        prep.setString(8, c.getCep());
+        prep.setString(2, c.getNome());
+        prep.setString(3, c.getTelefone());
+        prep.setTimestamp(4, c.getEntrada());
+        prep.setString(5, c.getCelular());
+        prep.setString(6, c.getCep());
         System.out.println(prep);
     }
 
-    public void atualizar(Carro carro, ClienteM cliente) throws SQLException, Exception {
-        String sql = "UPDATE Cliente SET endereco=?, nome=?, email=?,telefone=?,entrada=?,saida=?,celular=?,cep=?"
+    public void atualizar(Carro carro, Cliente_Diarista cliente) throws SQLException, Exception {
+        String sql = "UPDATE Cliente SET  nome=?,telefone=?,entrada=?,saida=?,celular=?,cep=?"
                 + "WHERE (cpf=?)";
         Connection con = null;
         PreparedStatement prep = null;
         try {
             con = ConnectionUtils.getConnection();
             prep = con.prepareStatement(sql);
-            prep.setString(1, cliente.getEndereco());
-            prep.setString(2, cliente.getNome());
-            prep.setString(3, cliente.getEmail());
-            prep.setString(4, cliente.getTelefone());
-            prep.setTimestamp(5, cliente.getEntrada());
-            prep.setTimestamp(6, cliente.getSaida());
-            prep.setString(7, cliente.getCelular());
-            prep.setString(8, cliente.getCep());
+            prep.setString(1, cliente.getNome());
+            prep.setString(2, cliente.getTelefone());
+            prep.setTimestamp(3, cliente.getEntrada());
+            prep.setTimestamp(4, cliente.getSaida());
+            prep.setString(5, cliente.getCelular());
+            prep.setString(6, cliente.getCep());
         } finally {
             if (prep != null && !prep.isClosed()) {
                 prep.close();
@@ -62,7 +58,7 @@ public class ClienteMDAO {
         }
     }
 
-    public void excluir(ClienteM cliente) throws SQLException, Exception {
+    public void excluir(Cliente_Diarista cliente) throws SQLException, Exception {
         //Monta a string de atualização do cliente no BD, utilizando
         //prepared statement
         String sql = "DELETE FROM Cliente  WHERE cpf=?";

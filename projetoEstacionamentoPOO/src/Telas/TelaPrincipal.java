@@ -5,9 +5,12 @@
  */
 package Telas;
 
+import Cliente.ClienteM;
+import Cliente.Cliente_Diarista;
+
 /**
  *
- * @author ADRIANA
+ * @author murilo.aaraujo
  */
 public class TelaPrincipal extends javax.swing.JFrame {
 
@@ -42,6 +45,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         botaoRegistrarCliente = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Estacionamento");
 
         labelDiarista.setText("Cliente Diarista");
 
@@ -188,7 +192,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoEntradaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoEntradaMouseClicked
-        // TODO add your handling code here:
+        RegistroEntrada entrada = new RegistroEntrada();
+        entrada.setVisible(true);
     }//GEN-LAST:event_botaoEntradaMouseClicked
 
     /**
