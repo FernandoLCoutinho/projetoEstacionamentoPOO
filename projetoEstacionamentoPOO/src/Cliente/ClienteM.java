@@ -5,24 +5,26 @@
  */
 package Cliente;
 
-
-
 /**
  *
  * @author murilo.aaraujo
  */
 public class ClienteM extends Cliente {
 
-    
+    private String nome;
     private String endereco;
     private String email;
     private String celular;
     private String cep;
     private boolean ativo;
 
-    
+    public String getNome() {
+        return nome;
+    }
 
-    
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
     public String getCep() {
         return cep;

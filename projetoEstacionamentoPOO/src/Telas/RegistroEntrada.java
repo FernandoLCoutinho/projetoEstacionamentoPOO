@@ -6,8 +6,8 @@
 package Telas;
 
 import Cliente.ClienteM;
-import Cliente.Cliente_Diarista;
-import DAOs.ClienteD_DAO;
+import Cliente.Cliente;
+import DAOs.ClienteDDAO;
 import DAOs.ClienteMDAO;
 import Veiculos.Carro;
 import Veiculos.Moto;
@@ -21,8 +21,9 @@ import javax.swing.JOptionPane;
  */
 public class RegistroEntrada extends javax.swing.JFrame {
 
-    Cliente_Diarista clienteD = new Cliente_Diarista();
+    Cliente clienteD = new Cliente();
     ClienteM clienteM = new ClienteM();
+    Carro carro = new Carro();
 
     /**
      * Creates new form RegistroEntrada
@@ -62,8 +63,6 @@ public class RegistroEntrada extends javax.swing.JFrame {
         txtTelefone = new javax.swing.JTextField();
         radioMoto = new javax.swing.JRadioButton();
         radioCarro = new javax.swing.JRadioButton();
-        radioDiarista = new javax.swing.JRadioButton();
-        radioMensalista = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Registrar Entrada de Veículo");
@@ -81,9 +80,9 @@ public class RegistroEntrada extends javax.swing.JFrame {
         labelPorte.setText("Porte:");
 
         botaoEntrada.setText("Registrar Entrada");
-        botaoEntrada.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                botaoEntradaMouseClicked(evt);
+        botaoEntrada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoEntradaActionPerformed(evt);
             }
         });
 
@@ -94,7 +93,7 @@ public class RegistroEntrada extends javax.swing.JFrame {
             }
         });
 
-        labelCliente.setText("Cliente:");
+        labelCliente.setText("CPF Cliente:");
 
         labelTelefone.setText("Telefone:");
 
@@ -105,76 +104,60 @@ public class RegistroEntrada extends javax.swing.JFrame {
         radioCarro.setSelected(true);
         radioCarro.setText("Carro");
 
-        grupoCliente.add(radioDiarista);
-        radioDiarista.setSelected(true);
-        radioDiarista.setText("Diarista/Avulso");
-
-        grupoCliente.add(radioMensalista);
-        radioMensalista.setText("Mensalista");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(287, 287, 287)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(radioMoto)
-                            .addComponent(radioCarro))
-                        .addGap(20, 20, 20))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(botaoEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(botaoCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(labelCor)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtCor))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(labelMarca)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtMarca))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(labelModelo)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtModelo))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(labelPlaca)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(labelPorte)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtPorte, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(74, 74, 74)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(labelTelefone)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtTelefone))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(labelCliente)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(radioDiarista)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(radioMensalista))))
+                        .addComponent(botaoEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(botaoCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(204, 204, 204)
-                        .addComponent(labelTitulo)))
-                .addContainerGap(32, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                            .addComponent(labelCor)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(txtCor))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                            .addComponent(labelMarca)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(txtMarca))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                            .addComponent(labelModelo)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(txtModelo))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                            .addComponent(labelPlaca)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(txtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(labelPorte)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtPorte, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(radioMoto)
+                                    .addComponent(radioCarro))
+                                .addGap(74, 74, 74)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(labelTelefone)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtTelefone))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(labelCliente)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(204, 204, 204)
+                                .addComponent(labelTitulo)))
+                        .addGap(0, 4, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,9 +179,7 @@ public class RegistroEntrada extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelMarca)
-                    .addComponent(radioDiarista)
-                    .addComponent(radioMensalista))
+                    .addComponent(labelMarca))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelCor)
@@ -236,41 +217,17 @@ public class RegistroEntrada extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_botaoCancelarMouseClicked
 
-    private void botaoEntradaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoEntradaMouseClicked
-
-        if (radioDiarista.isSelected()) {
-            if (((txtCliente == null || txtCliente.equals("")) || txtTelefone == null) || txtTelefone.equals("")) {
-                clienteD.setNome(txtCliente.getText());
-                clienteD.setTelefone(txtTelefone.getText());
-//                ClienteD_DAO cdao = new ClienteD_DAO();
-//                try {
-//                    cdao.inserir(clienteD);
-//                } catch (Exception ex) {
-//                    Logger.getLogger(RegistroEntrada.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-            } else {
-                JOptionPane aviso = new JOptionPane();
-                aviso.setMessage("Campo Cliente ou Telefone vazio");
-                aviso.setVisible(true);
-            }
-        } else {
-            if (txtCliente == null || "".equals(txtCliente) || txtTelefone == null || "".equals(txtTelefone)) {
-                clienteM.setNome(txtCliente.getText());
-                clienteM.setTelefone(txtTelefone.getText());
-//                ClienteMDAO cmdao = new ClienteMDAO();
-//                try {
-//                    cmdao.inserir(clienteM);
-//                } catch (Exception ex) {
-//                    Logger.getLogger(RegistroEntrada.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-            } else {
-                JOptionPane aviso = new JOptionPane();
-                aviso.setMessage("Campo Cliente ou Telefone vazio");
-                aviso.setVisible(true);
-            }
+    private void botaoEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEntradaActionPerformed
+        clienteD.setCpf(txtCliente.getText());
+        clienteD.setTelefone(txtTelefone.getText());
+        try {
+            Servicos.ServicoClienteD.cadastrarClienteD(clienteD);
+        } catch (Exception ex) {
+            Logger.getLogger(RegistroEntrada.class.getName()).log(Level.SEVERE, null, ex);
         }
+
         if (radioCarro.isSelected()) {
-            Carro carro = new Carro();
+
             if (((((((((txtPlaca != null || !"".equals(txtPlaca.getText())) || txtModelo != null)
                     || !"".equals(txtModelo.getText())) || txtMarca != null) || !"".equals(txtMarca.getText()))
                     || txtCor != null) || !"".equals(txtCor.getText())) || txtPorte != null) || !"".equals(txtPorte.getText())) {
@@ -279,10 +236,14 @@ public class RegistroEntrada extends javax.swing.JFrame {
                 carro.setMarca(txtMarca.getText());
                 carro.setCor(txtCor.getText());
                 carro.setPorte(txtPorte.getText());
+                try {
+                    Servicos.ServicoCarro.cadastrarCarro(carro);
+                } catch (Exception ex) {
+                    Logger.getLogger(RegistroEntrada.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
             } else {
-                JOptionPane aviso = new JOptionPane();
-                aviso.setMessage("Campo Cliente ou Telefone vazio");
-                aviso.setVisible(true);
+
             }
         } else {
             Moto moto = new Moto();
@@ -294,11 +255,9 @@ public class RegistroEntrada extends javax.swing.JFrame {
                 moto.setCor(txtCor.getText());
             }
         }
-        JOptionPane aviso = new JOptionPane();
-        aviso.setMessage("Cliente inserido com sucesso");
-        aviso.setVisible(true);
+        JOptionPane.showMessageDialog(this, "Fim da operação");
         dispose();
-    }//GEN-LAST:event_botaoEntradaMouseClicked
+    }//GEN-LAST:event_botaoEntradaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -350,8 +309,6 @@ public class RegistroEntrada extends javax.swing.JFrame {
     private javax.swing.JLabel labelTelefone;
     private javax.swing.JLabel labelTitulo;
     private javax.swing.JRadioButton radioCarro;
-    private javax.swing.JRadioButton radioDiarista;
-    private javax.swing.JRadioButton radioMensalista;
     private javax.swing.JRadioButton radioMoto;
     private javax.swing.JTextField txtCliente;
     private javax.swing.JTextField txtCor;

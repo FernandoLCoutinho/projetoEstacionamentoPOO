@@ -5,9 +5,6 @@
  */
 package Telas;
 
-import Cliente.ClienteM;
-import Cliente.Cliente_Diarista;
-
 /**
  *
  * @author murilo.aaraujo
@@ -77,11 +74,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         tabelaDiarista.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
         botaoEntrada.setText("Registrar Entrada");
-        botaoEntrada.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                botaoEntradaMouseClicked(evt);
-            }
-        });
         botaoEntrada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoEntradaActionPerformed(evt);
@@ -89,6 +81,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
 
         botaoSaida.setText("Registrar Saida");
+        botaoSaida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoSaidaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -98,17 +95,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 945, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(362, 362, 362)
                         .addComponent(labelDiarista)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(botaoEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 475, Short.MAX_VALUE)
-                        .addComponent(botaoSaida, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(botaoEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(botaoSaida, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,14 +194,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botaoEntradaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoEntradaMouseClicked
-        RegistroEntrada entrada = new RegistroEntrada();
-        entrada.setVisible(true);
-    }//GEN-LAST:event_botaoEntradaMouseClicked
-
     private void botaoEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEntradaActionPerformed
         // TODO add your handling code here:
+        RegistroEntrada entrada = new RegistroEntrada();
+        entrada.setVisible(true);
     }//GEN-LAST:event_botaoEntradaActionPerformed
+
+    private void botaoSaidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSaidaActionPerformed
+        // TODO add your handling code here:
+        RegistroSaida saida = new RegistroSaida();
+        saida.setVisible(true);
+    }//GEN-LAST:event_botaoSaidaActionPerformed
 
     /**
      * @param args the command line arguments

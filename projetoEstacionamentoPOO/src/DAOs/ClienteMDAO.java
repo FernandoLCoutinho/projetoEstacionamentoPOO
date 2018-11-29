@@ -27,7 +27,6 @@ public class ClienteMDAO {
         prep = con.prepareStatement(sql);
         prep.setString(1, c.getCpf());
         prep.setString(2, c.getEndereco());
-        prep.setString(3, c.getNome());
         prep.setString(4, c.getEmail());
         prep.setString(5, c.getTelefone());
         prep.setString(6, c.getCelular());
@@ -36,7 +35,7 @@ public class ClienteMDAO {
     }
 
     public void atualizar(Carro carro, ClienteM cliente) throws SQLException, Exception {
-        String sql = "UPDATE Cliente SET endereco=?, nome=?, email=?,telefone=?,celular=?,cep=?"
+        String sql = "UPDATE Cliente SET endereco=?, email=?,telefone=?,celular=?,cep=?"
                 + "WHERE (cpf=?)";
         Connection con = null;
         PreparedStatement prep = null;
@@ -44,11 +43,10 @@ public class ClienteMDAO {
             con = ConnectionUtils.getConnection();
             prep = con.prepareStatement(sql);
             prep.setString(1, cliente.getEndereco());
-            prep.setString(2, cliente.getNome());
-            prep.setString(3, cliente.getEmail());
-            prep.setString(4, cliente.getTelefone());
-            prep.setString(5, cliente.getCelular());
-            prep.setString(6, cliente.getCep());
+            prep.setString(2, cliente.getEmail());
+            prep.setString(3, cliente.getTelefone());
+            prep.setString(4, cliente.getCelular());
+            prep.setString(5, cliente.getCep());
         } finally {
             if (prep != null && !prep.isClosed()) {
                 prep.close();

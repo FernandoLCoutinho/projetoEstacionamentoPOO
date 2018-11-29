@@ -20,7 +20,7 @@ import java.sql.SQLException;
 public class CarroDAO {
 
     public static void inserir(Carro carro) throws SQLException, Exception {
-        String sql = "INSERT INTO veiulo(placa, modelo, marca, cor, porte, dataentrada, datasaida) VALUES (?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO veiculo (placa, modelo, marca, cor, porte, horaE, horaS) VALUES (?,?,?,?,?,?,?)";
         Connection con = null;
         PreparedStatement preparedStatement = null;
         long millis = System.currentTimeMillis();
@@ -32,8 +32,8 @@ public class CarroDAO {
             preparedStatement.setString(3, carro.getMarca());
             preparedStatement.setString(4, carro.getCor());
             preparedStatement.setString(5, carro.getPorte());
-            preparedStatement.setDate(6, new Date(0, 0, 0000));
-            preparedStatement.setDate(7, new Date(0, 0, 0000));
+            preparedStatement.setDate(6, new Date(millis));
+            preparedStatement.setDate(7, new Date(7, 7, 7777));
             preparedStatement.execute();
         } finally {
             if (preparedStatement != null && !preparedStatement.isClosed()) {
@@ -46,7 +46,7 @@ public class CarroDAO {
     }
 
     public static void atualizar(Carro carro, Cliente cliente) throws SQLException, Exception {
-        String sql = "UPDATE Veiculo SET modelo=?, marca=?, cor=?, porte=?, dono=?"
+        String sql = "UPDATE Veiculo SET modelo=?, marca=?, cor=?, porte=?"
                 + "WHERE (placa=?)";
         Connection con = null;
         PreparedStatement prep = null;
@@ -54,10 +54,9 @@ public class CarroDAO {
             con = ConnectionUtils.getConnection();
             prep = con.prepareStatement(sql);
             prep.setString(1, carro.getModelo());
-            prep.setString(3, carro.getMarca());
-            prep.setString(4, carro.getCor());
-            prep.setString(5, carro.getPorte());
-            prep.setString(6, cliente.getNome());
+            prep.setString(2, carro.getMarca());
+            prep.setString(3, carro.getCor());
+            prep.setString(4, carro.getPorte());
         } finally {
             if (prep != null && !prep.isClosed()) {
                 prep.close();

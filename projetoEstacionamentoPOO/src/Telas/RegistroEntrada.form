@@ -45,85 +45,72 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
+              <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="287" pref="287" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="radioMoto" min="-2" max="-2" attributes="0"/>
-                              <Component id="radioCarro" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="botaoEntrada" min="-2" pref="133" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="botaoCancelar" min="-2" pref="133" max="-2" attributes="0"/>
                       </Group>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="labelCor" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="txtCor" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="labelMarca" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="txtMarca" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="labelModelo" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="txtModelo" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="labelPlaca" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="txtPlaca" min="-2" pref="173" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="labelPorte" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="txtPorte" min="-2" pref="173" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="radioMoto" min="-2" max="-2" attributes="0"/>
+                                      <Component id="radioCarro" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="labelTelefone" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="txtTelefone" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <Component id="labelCliente" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="txtCliente" min="-2" pref="127" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="204" max="-2" attributes="0"/>
+                                  <Component id="labelTitulo" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="0" pref="4" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="labelCor" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="txtCor" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="labelMarca" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="txtMarca" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="labelModelo" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="txtModelo" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="labelPlaca" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="txtPlaca" min="-2" pref="173" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="labelPorte" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtPorte" min="-2" pref="173" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="labelTelefone" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="txtTelefone" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <Component id="labelCliente" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="txtCliente" min="-2" pref="127" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="radioDiarista" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="radioMensalista" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="204" max="-2" attributes="0"/>
-                          <Component id="labelTitulo" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace pref="32" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -150,8 +137,6 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="txtMarca" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="labelMarca" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="radioDiarista" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="radioMensalista" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -223,7 +208,7 @@
             <Property name="text" type="java.lang.String" value="Registrar Entrada"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="botaoEntradaMouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoEntradaActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="botaoCancelar">
@@ -236,7 +221,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="labelCliente">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Cliente:"/>
+            <Property name="text" type="java.lang.String" value="CPF Cliente:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtCliente">
@@ -263,23 +248,6 @@
             </Property>
             <Property name="selected" type="boolean" value="true"/>
             <Property name="text" type="java.lang.String" value="Carro"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JRadioButton" name="radioDiarista">
-          <Properties>
-            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="grupoCliente"/>
-            </Property>
-            <Property name="selected" type="boolean" value="true"/>
-            <Property name="text" type="java.lang.String" value="Diarista/Avulso"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JRadioButton" name="radioMensalista">
-          <Properties>
-            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="grupoCliente"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Mensalista"/>
           </Properties>
         </Component>
       </SubComponents>

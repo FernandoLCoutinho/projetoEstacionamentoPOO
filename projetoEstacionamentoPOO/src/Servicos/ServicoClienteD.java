@@ -5,14 +5,15 @@
  */
 package Servicos;
 
-import DAOs.CarroDAO;
-import Veiculos.Carro;
+import Cliente.Cliente;
+import DAOs.ClienteDDAO;
+
 /**
  *
- * @author murilo.aaraujo
+ * @author fernando.lcoutinho
  */
-public class ServicoCarro {
-    public static void cadastrarCarro(Carro carro) throws Exception{
-        CarroDAO.inserir(carro);
+public class ServicoClienteD {
+    public static void cadastrarClienteD(Cliente cliente) throws Exception {
+        ClienteDDAO.inserir(cliente);
     }
 }
