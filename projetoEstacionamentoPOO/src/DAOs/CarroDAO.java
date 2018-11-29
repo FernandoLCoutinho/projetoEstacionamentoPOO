@@ -19,8 +19,8 @@ import java.sql.SQLException;
  */
 public class CarroDAO {
 
-    public void inserir(Carro carro) throws SQLException, Exception {
-        String sql = "INSERT INTO carro(placa, modelo, marca, cor, porte, dataentrada,datasaida) VALUES (?,?,?,?,?,?,?)";
+    public static void inserir(Carro carro) throws SQLException, Exception {
+        String sql = "INSERT INTO veiulo(placa, modelo, marca, cor, porte, dataentrada, datasaida) VALUES (?,?,?,?,?,?,?)";
         Connection con = null;
         PreparedStatement preparedStatement = null;
         long millis = System.currentTimeMillis();
@@ -32,7 +32,7 @@ public class CarroDAO {
             preparedStatement.setString(3, carro.getMarca());
             preparedStatement.setString(4, carro.getCor());
             preparedStatement.setString(5, carro.getPorte());
-            preparedStatement.setDate(6, new Date(millis));
+            preparedStatement.setDate(6, new Date(0, 0, 0000));
             preparedStatement.setDate(7, new Date(0, 0, 0000));
             preparedStatement.execute();
         } finally {
@@ -45,7 +45,7 @@ public class CarroDAO {
         }
     }
 
-    public void atualizar(Carro carro, Cliente cliente) throws SQLException, Exception {
+    public static void atualizar(Carro carro, Cliente cliente) throws SQLException, Exception {
         String sql = "UPDATE Veiculo SET modelo=?, marca=?, cor=?, porte=?, dono=?"
                 + "WHERE (placa=?)";
         Connection con = null;

@@ -19,7 +19,7 @@ import Veiculos.Carro;
 public class ClienteD_DAO {
 
     public void inserir(Cliente_Diarista c) throws SQLException, Exception {
-        String sql = "INSERT INTO `cliente`(`cpf`,`nome`,`telefone`,`entrada`,`celular`,`cep`) VALUES (?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO `cliente`(`cpf`,`nome`,`telefone`,`celular`,`cep`) VALUES (?,?,?,?,?,?,?)";
         Connection con = null;
         PreparedStatement prep = null;
 
@@ -28,9 +28,8 @@ public class ClienteD_DAO {
         prep.setString(1, c.getCpf());
         prep.setString(2, c.getNome());
         prep.setString(3, c.getTelefone());
-        prep.setTimestamp(4, c.getEntrada());
-        prep.setString(5, c.getCelular());
-        prep.setString(6, c.getCep());
+        prep.setString(4, c.getCelular());
+        prep.setString(5, c.getCep());
         System.out.println(prep);
     }
 
@@ -44,10 +43,8 @@ public class ClienteD_DAO {
             prep = con.prepareStatement(sql);
             prep.setString(1, cliente.getNome());
             prep.setString(2, cliente.getTelefone());
-            prep.setTimestamp(3, cliente.getEntrada());
-            prep.setTimestamp(4, cliente.getSaida());
-            prep.setString(5, cliente.getCelular());
-            prep.setString(6, cliente.getCep());
+            prep.setString(3, cliente.getCelular());
+            prep.setString(4, cliente.getCep());
         } finally {
             if (prep != null && !prep.isClosed()) {
                 prep.close();

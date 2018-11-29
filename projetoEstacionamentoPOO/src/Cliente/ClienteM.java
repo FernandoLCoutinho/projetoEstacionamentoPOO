@@ -13,7 +13,7 @@ package Cliente;
  */
 public class ClienteM extends Cliente {
 
-    private String cpf;
+    
     private String endereco;
     private String email;
     private String celular;
@@ -22,13 +22,7 @@ public class ClienteM extends Cliente {
 
     
 
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
+    
 
     public String getCep() {
         return cep;

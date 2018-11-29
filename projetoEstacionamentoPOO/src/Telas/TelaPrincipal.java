@@ -82,6 +82,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 botaoEntradaMouseClicked(evt);
             }
         });
+        botaoEntrada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoEntradaActionPerformed(evt);
+            }
+        });
 
         botaoSaida.setText("Registrar Saida");
 
@@ -195,6 +200,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         RegistroEntrada entrada = new RegistroEntrada();
         entrada.setVisible(true);
     }//GEN-LAST:event_botaoEntradaMouseClicked
+
+    private void botaoEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEntradaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botaoEntradaActionPerformed
 
     /**
      * @param args the command line arguments

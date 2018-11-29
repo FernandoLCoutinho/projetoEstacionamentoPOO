@@ -12,12 +12,19 @@ import java.sql.Timestamp;
  * @author murilo.aaraujo
  */
 public class Cliente {
-
+    
+    private String cpf;
     private String nome;
     private String telefone;
-    private Timestamp entrada;
-    private Timestamp saida;
+    
+    public String getCpf() {
+        return cpf;
+    }
 
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+    
     public String getNome() {
         return nome;
     }
@@ -34,20 +41,6 @@ public class Cliente {
         this.telefone = telefone;
     }
 
-    public Timestamp getEntrada() {
-        return entrada;
-    }
-
-    public void setEntrada(Timestamp entrada) {
-        this.entrada = entrada;
-    }
-
-    public Timestamp getSaida() {
-        return saida;
-    }
-
-    public void setSaida(Timestamp saida) {
-        this.saida = saida;
-    }
+    
 
 }
