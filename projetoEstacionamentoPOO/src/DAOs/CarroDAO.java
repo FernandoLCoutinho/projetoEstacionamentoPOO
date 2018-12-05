@@ -28,7 +28,6 @@ public abstract class CarroDAO implements Inserivel, Alteravel {
         Connection con = null;
         PreparedStatement prep = null;
         long millis = System.currentTimeMillis();
-        long decoy = 0;
         try {
             con = ConnectionUtils.getConnection();
             prep = con.prepareStatement(sql);
@@ -38,7 +37,7 @@ public abstract class CarroDAO implements Inserivel, Alteravel {
             prep.setString(4, carro.getCor());
             prep.setString(5, carro.getPorte());
             prep.setTimestamp(6, new Timestamp(millis));
-            prep.setTimestamp(7, new Timestamp(decoy));
+            prep.setTimestamp(7, new Timestamp(millis));
             prep.execute();
         } finally {
             if (prep != null && !prep.isClosed()) {
@@ -52,44 +51,67 @@ public abstract class CarroDAO implements Inserivel, Alteravel {
 
     public static void alterar(Carro carro) throws SQLException, Exception {
         String sql = "UPDATE veiculo SET horaS=? "
-                + "WHERE (placa=?)";
+                + "WHERE placa=?";
         Connection con = null;
         PreparedStatement prep = null;
+        long millis = System.currentTimeMillis();
 
         con = ConnectionUtils.getConnection();
         prep = con.prepareStatement(sql);
-        prep.setTimestamp(1, carro.getSaida());
+        prep.setTimestamp(1, new Timestamp(millis));
         prep.setString(2, carro.getPlaca());
         prep.executeUpdate();
         con.close();
         prep.close();
 
     }
-    
-    public static ArrayList<Carro> listaCarro(){
+
+    public static ArrayList<Carro> listaCarro() {
         ArrayList<Carro> listaCarro = new ArrayList<>();
-        try{
+        try {
             Connection con = new ConnectionUtils().getConnection();
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM veiculo");
-            
-            while(rs.next()){
-            Carro c = new Carro();
-            
-            c.setPlaca(rs.getString("placa"));
-            c.setModelo(rs.getString("modelo"));
-            c.setMarca(rs.getString("marca"));
-            c.setPorte(rs.getString("porte"));
-            c.setEntrada(rs.getTimestamp("horaE"));
-            c.setSaida(rs.getTimestamp("horaS"));
-            
-            listaCarro.add(c);
+
+            while (rs.next()) {
+                Carro c = new Carro();
+
+                c.setPlaca(rs.getString("placa"));
+                c.setModelo(rs.getString("modelo"));
+                c.setMarca(rs.getString("marca"));
+                c.setPorte(rs.getString("porte"));
+                c.setEntrada(rs.getTimestamp("horaE"));
+                c.setSaida(rs.getTimestamp("horaS"));
+
+                listaCarro.add(c);
             }
-        
-        }catch(SQLException e){
+
+        } catch (SQLException e) {
             System.out.println("Erro no banco de dados " + e);
         }
         return listaCarro;
+    }
+
+    public static Carro getCarroByPlaca(String placa) {
+        Carro c = new Carro();
+        try {
+            Connection con = new ConnectionUtils().getConnection();
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM `veiculo` where placa = '" + placa + "'");
+
+            while (rs.next()) {
+                c.setPlaca(rs.getString("placa"));
+                c.setModelo(rs.getString("modelo"));
+                c.setMarca(rs.getString("marca"));
+                c.setPorte(rs.getString("porte"));
+                c.setEntrada(rs.getTimestamp("horaE"));
+                c.setSaida(rs.getTimestamp("horaS"));
+            }
+            con.close();
+        } catch (SQLException e) {
+            System.out.println("Erro no banco de dados " + e);
+        }
+        return c;
     }
 
 //    public static void atualizar(Carro carro, Cliente cliente) throws SQLException, Exception {

@@ -218,13 +218,13 @@ public class RegistroEntrada extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoCancelarMouseClicked
 
     private void botaoEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEntradaActionPerformed
-        clienteD.setCpf(txtCliente.getText());
-        clienteD.setTelefone(txtTelefone.getText());
-        try {
-            Servicos.ServicoClienteD.cadastrarClienteD(clienteD);
-        } catch (Exception ex) {
-            Logger.getLogger(RegistroEntrada.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        clienteD.setCpf(txtCliente.getText());
+//        clienteD.setTelefone(txtTelefone.getText());
+//        try {
+//            Servicos.ServicoClienteD.cadastrarClienteD(clienteD);
+//        } catch (Exception ex) {
+//            Logger.getLogger(RegistroEntrada.class.getName()).log(Level.SEVERE, null, ex);
+//        }
 
         if (radioCarro.isSelected()) {
 

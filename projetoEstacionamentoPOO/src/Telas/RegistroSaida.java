@@ -5,7 +5,11 @@
  */
 package Telas;
 
+import Servicos.ServicoCarro;
 import Veiculos.Carro;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -143,7 +147,18 @@ public class RegistroSaida extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoCancelarActionPerformed
 
     private void botaoRegistrarSaidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoRegistrarSaidaActionPerformed
-        
+        if("".equals(txtPlaca) || txtPlaca == null){
+            JOptionPane.showMessageDialog(this, "Digite uma placa");
+        } else {
+            try {
+                ServicoCarro.saidaCarro(txtPlaca.getText());
+            } catch (Exception ex) {
+                Logger.getLogger(RegistroSaida.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(this, "Erro");
+            }
+        }
+        JOptionPane.showMessageDialog(this, "Fim da Operação");
+        dispose();
     }//GEN-LAST:event_botaoRegistrarSaidaActionPerformed
 
     /**

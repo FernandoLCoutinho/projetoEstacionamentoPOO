@@ -22,4 +22,9 @@ public class ServicoCarro {
         lista = CarroDAO.listaCarro();
         return lista;
     }
+    
+    public static void saidaCarro(String Placa) throws Exception{
+        Carro c = CarroDAO.getCarroByPlaca(Placa);
+        CarroDAO.alterar(c);
+    }
 }
