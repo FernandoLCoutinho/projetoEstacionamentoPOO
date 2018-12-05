@@ -9,10 +9,8 @@ package Interfaces;
  *
  * @author Fernando Lima Coutinho
  */
-public interface InserivelAlteravel {
-    
+public interface Inserivel {
+
     public void inserir();
-    
-    public void alterar();
-    
+
 }

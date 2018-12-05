@@ -7,6 +7,7 @@ package Servicos;
 
 import DAOs.CarroDAO;
 import Veiculos.Carro;
+import java.util.ArrayList;
 /**
  *
  * @author murilo.aaraujo
@@ -14,5 +15,11 @@ import Veiculos.Carro;
 public class ServicoCarro {
     public static void cadastrarCarro(Carro carro) throws Exception{
         CarroDAO.inserir(carro);
+    }
+    
+    public static ArrayList<Carro> listarCarro(){
+        ArrayList<Carro> lista = new ArrayList<>();
+        lista = CarroDAO.listaCarro();
+        return lista;
     }
 }

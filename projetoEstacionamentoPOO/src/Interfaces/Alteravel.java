@@ -5,14 +5,12 @@
  */
 package Interfaces;
 
-import java.util.List;
-
 /**
  *
  * @author Coutinho's
  */
-public interface Pesquisavel {
+public interface Alteravel {
     
-    public List pesquisar();
+    public void alterar();
     
 }
