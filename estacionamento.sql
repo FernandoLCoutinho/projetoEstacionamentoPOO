@@ -17,8 +17,8 @@ marca varchar(20),
 porte varchar(20),
 cpfC varchar(16),
 telefone varchar(50),
-horaE time,
-horaS time,
+horaE timestamp,
+horaS timestamp,
 primary key(placa),
 foreign key(cpfC) references cliente(cpf)
 );
