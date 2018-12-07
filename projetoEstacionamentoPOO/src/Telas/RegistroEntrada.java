@@ -5,10 +5,7 @@
  */
 package Telas;
 
-import Cliente.ClienteM;
 import Cliente.Cliente;
-import DAOs.ClienteDDAO;
-import DAOs.ClienteMDAO;
 import Veiculos.Carro;
 import Veiculos.Moto;
 import java.util.logging.Level;
@@ -22,7 +19,6 @@ import javax.swing.JOptionPane;
 public class RegistroEntrada extends javax.swing.JFrame {
 
     Cliente clienteD = new Cliente();
-    ClienteM clienteM = new ClienteM();
     Carro carro = new Carro();
 
     /**
