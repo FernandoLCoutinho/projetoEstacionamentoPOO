@@ -25,7 +25,7 @@ import java.util.List;
 public abstract class CarroDAO implements Inserivel, Alteravel {
 
     public static void inserir(Carro carro) throws SQLException, Exception {
-        String sql = "INSERT INTO veiculo (placa, modelo, marca, cor, porte, horaE, horaS) VALUES (?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO veiculo (placa, modelo, marca, cor, porte, horaE, horaS, tipo) VALUES (?,?,?,?,?,?,?,?)";
         Connection con = null;
         PreparedStatement prep = null;
         long millis = System.currentTimeMillis();
@@ -39,6 +39,7 @@ public abstract class CarroDAO implements Inserivel, Alteravel {
             prep.setString(5, carro.getPorte());
             prep.setTimestamp(6, new Timestamp(millis));
             prep.setTimestamp(7, new Timestamp(millis));
+            prep.setString(8, carro.getTipo());
             prep.execute();
         } finally {
             if (prep != null && !prep.isClosed()) {
@@ -104,6 +105,7 @@ public abstract class CarroDAO implements Inserivel, Alteravel {
                 carro.setCor(result.getString("cor"));
                 carro.setEntrada(result.getTimestamp("horaE"));
                 carro.setSaida(result.getTimestamp("horaS"));
+                carro.setTipo(result.getString("tipo"));
                 
                 listaCarro.add(carro);
             }
