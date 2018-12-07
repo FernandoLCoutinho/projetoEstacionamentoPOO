@@ -76,6 +76,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         tabelaDiarista.setColumnSelectionAllowed(true);
         tabelaDiarista.setSelectionBackground(new java.awt.Color(204, 204, 204));
         tabelaDiarista.setSelectionForeground(new java.awt.Color(204, 204, 204));
+        tabelaDiarista.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tabelaDiaristaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tabelaDiaristaFocusLost(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabelaDiarista);
         tabelaDiarista.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
@@ -219,11 +227,26 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void btnpesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnpesquisarActionPerformed
         try {
             pesquisar();
-            // TODO add your handling code here:
         } catch (Exception ex) {
             Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnpesquisarActionPerformed
+
+    private void tabelaDiaristaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tabelaDiaristaFocusGained
+        try {
+            pesquisar();
+        } catch (Exception ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_tabelaDiaristaFocusGained
+
+    private void tabelaDiaristaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tabelaDiaristaFocusLost
+        try {
+            pesquisar();
+        } catch (Exception ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_tabelaDiaristaFocusLost
 
     /**
      * @param args the command line arguments
