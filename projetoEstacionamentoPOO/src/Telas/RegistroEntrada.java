@@ -99,6 +99,11 @@ public class RegistroEntrada extends javax.swing.JFrame {
 
         grupoVeiculo.add(radioMoto);
         radioMoto.setText("Moto");
+        radioMoto.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                radioMotoFocusGained(evt);
+            }
+        });
 
         grupoVeiculo.add(radioCarro);
         radioCarro.setSelected(true);
@@ -218,16 +223,16 @@ public class RegistroEntrada extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoCancelarMouseClicked
 
     private void botaoEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEntradaActionPerformed
-//        clienteD.setCpf(txtCliente.getText());
-//        clienteD.setTelefone(txtTelefone.getText());
-//        try {
-//            Servicos.ServicoClienteD.cadastrarClienteD(clienteD);
-//        } catch (Exception ex) {
-//            Logger.getLogger(RegistroEntrada.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+        clienteD.setCpf(txtCliente.getText());
+        clienteD.setTelefone(txtTelefone.getText());
+        try {
+            Servicos.ServicoClienteD.cadastrarClienteD(clienteD);
+        } catch (Exception ex) {
+            Logger.getLogger(RegistroEntrada.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         if (radioCarro.isSelected()) {
-
+            
             if (((((((((txtPlaca != null || !"".equals(txtPlaca.getText())) || txtModelo != null)
                     || !"".equals(txtModelo.getText())) || txtMarca != null) || !"".equals(txtMarca.getText()))
                     || txtCor != null) || !"".equals(txtCor.getText())) || txtPorte != null) || !"".equals(txtPorte.getText())) {
@@ -236,28 +241,35 @@ public class RegistroEntrada extends javax.swing.JFrame {
                 carro.setMarca(txtMarca.getText());
                 carro.setCor(txtCor.getText());
                 carro.setPorte(txtPorte.getText());
+                carro.setTipo(radioCarro.getText());
                 try {
                     Servicos.ServicoCarro.cadastrarCarro(carro);
                 } catch (Exception ex) {
                     Logger.getLogger(RegistroEntrada.class.getName()).log(Level.SEVERE, null, ex);
                 }
-
-            } else {
-
             }
-        } else {
-            Moto moto = new Moto();
-            if (txtPlaca == null || "".equals(txtPlaca.getText()) || txtModelo == null || "".equals(txtModelo.getText())
-                    || txtMarca == null || "".equals(txtMarca.getText()) || txtCor == null || "".equals(txtCor.getText())) {
+        } if (radioMoto.isSelected()){
+                Moto moto = new Moto();
+            
                 moto.setPlaca(txtPlaca.getText());
                 moto.setModelo(txtModelo.getText());
                 moto.setMarca(txtMarca.getText());
                 moto.setCor(txtCor.getText());
-            }
+                moto.setTipo(radioMoto.getText());
+                try {
+                    Servicos.ServicoMoto.cadastrarMoto(moto);
+                } catch (Exception ex) {
+                    Logger.getLogger(RegistroEntrada.class.getName()).log(Level.SEVERE, null, ex);
+                }
         }
         JOptionPane.showMessageDialog(this, "Fim da operação");
         dispose();
     }//GEN-LAST:event_botaoEntradaActionPerformed
+
+    private void radioMotoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_radioMotoFocusGained
+        // TODO add your handling code here:
+        txtPorte.disable();
+    }//GEN-LAST:event_radioMotoFocusGained
 
     /**
      * @param args the command line arguments

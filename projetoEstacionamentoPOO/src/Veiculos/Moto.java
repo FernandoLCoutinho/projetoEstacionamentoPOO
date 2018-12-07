@@ -5,12 +5,16 @@
  */
 package Veiculos;
 
+import java.sql.Timestamp;
+
 /**
  *
  * @author fernando.lcoutinho
  */
 public class Moto extends VeiculoGeral{
     String marca;
+    private Timestamp horaE;
+    private Timestamp horaS;
     
 
     public String getMarca() {
@@ -19,5 +23,21 @@ public class Moto extends VeiculoGeral{
 
     public void setMarca(String marca) {
         this.marca = marca;
+    }
+    
+    public Timestamp getEntrada() {
+        return horaE;
+    }
+
+    public void setEntrada(Timestamp entrada) {
+        this.horaE = entrada;
+    }
+
+    public Timestamp getSaida() {
+        return horaS;
+    }
+
+    public void setSaida(Timestamp saida) {
+        this.horaS = saida;
     }
 }

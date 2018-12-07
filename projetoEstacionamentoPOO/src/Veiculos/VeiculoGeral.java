@@ -14,6 +14,15 @@ public class VeiculoGeral {
     private String cor;
     private String modelo;
     private String valor;
+    private String tipo;
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
     
     public String getPlaca() {
         return placa;

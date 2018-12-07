@@ -6,7 +6,9 @@
 package Telas;
 
 import Servicos.ServicoCarro;
+import Servicos.ServicoMoto;
 import Veiculos.Carro;
+import Veiculos.Moto;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -54,18 +56,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         tabelaDiarista.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Placa", "Modelo", "Cor", "Hora de Entrada", "Hora de Saida"
+                "Placa", "Modelo", "Cor", "Hora de Entrada", "Hora de Saida", "Tipo", "Porte"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -288,6 +290,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         
         try {
             List<Carro> resultado = ServicoCarro.listarCarro();
+            List<Moto> resultado1 = ServicoMoto.listarMoto();
             DefaultTableModel model
                 = (DefaultTableModel) tabelaDiarista.getModel();
             model.setRowCount(0);
@@ -295,21 +298,37 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 for(int i = 0; i < resultado.size(); i++){
                     Carro carro = resultado.get(i);
                     if(carro != null){
-                        Object[] row = new Object[5];
+                        Object[] row = new Object[7];
                         row[0] = carro.getPlaca();
                         row[1] = carro.getModelo();
                         row[2] = carro.getCor();
                         row[3] = carro.getEntrada();
                         row[4] = carro.getSaida();
+                        row[5] = carro.getTipo();
+                        row[6] = carro.getPorte();
                         
                         model.addRow(row);
+                    }
+                }
+                if(resultado1 != null && resultado1.size() > 0){
+                    for(int i = 0; i < resultado1.size(); i++){
+                        Moto moto = resultado1.get(i);
+                    if(moto != null){
+                        Object[] row = new Object[6];
+                        row[0] = moto.getPlaca();
+                        row[1] = moto.getModelo();
+                        row[2] = moto.getCor();
+                        row[3] = moto.getEntrada();
+                        row[4] = moto.getSaida();
+                        row[5] = moto.getTipo();
+                        model.addRow(row);
+                    }
                     }
                 }
             }
         } catch (Exception ex) {
             Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

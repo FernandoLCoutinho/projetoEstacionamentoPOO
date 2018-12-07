@@ -9,6 +9,7 @@ import Interfaces.Alteravel;
 import Interfaces.Inserivel;
 import Util.ConnectionUtils;
 import Veiculos.Carro;
+import Veiculos.Moto;
 import java.sql.Connection;
 import java.sql.Timestamp;
 import java.sql.PreparedStatement;
@@ -40,6 +41,32 @@ public abstract class CarroDAO implements Inserivel, Alteravel {
             prep.setTimestamp(6, new Timestamp(millis));
             prep.setTimestamp(7, new Timestamp(millis));
             prep.setString(8, carro.getTipo());
+            prep.execute();
+        } finally {
+            if (prep != null && !prep.isClosed()) {
+                prep.close();
+            }
+            if (con != null && !con.isClosed()) {
+                con.close();
+            }
+        }
+    }
+    
+    public static void inserirM(Moto moto) throws SQLException, Exception {
+        String sql = "INSERT INTO veiculo (placa, modelo, marca, cor, horaE, horaS, tipo) VALUES (?,?,?,?,?,?,?)";
+        Connection con = null;
+        PreparedStatement prep = null;
+        long millis = System.currentTimeMillis();
+        try {
+            con = ConnectionUtils.getConnection();
+            prep = con.prepareStatement(sql);
+            prep.setString(1, moto.getPlaca());
+            prep.setString(2, moto.getModelo());
+            prep.setString(3, moto.getMarca());
+            prep.setString(4, moto.getCor());
+            prep.setTimestamp(5, new Timestamp(millis));
+            prep.setTimestamp(6, new Timestamp(millis));
+            prep.setString(7, moto.getTipo());
             prep.execute();
         } finally {
             if (prep != null && !prep.isClosed()) {
@@ -127,6 +154,64 @@ public abstract class CarroDAO implements Inserivel, Alteravel {
         return listaCarro;
     }
 
+    public static List<Moto> listarM()
+            throws SQLException, Exception {
+        //Monta a string de listagem de clientes no banco, considerando
+        //apenas a coluna de ativação de clientes ("enabled")
+        String sql = "SELECT * FROM veiculo";
+        //Lista de clientes de resultado
+        List<Moto> listaMoto = null;
+        //Conexão para abertura e fechamento
+        Connection connection = null;
+        //Statement para obtenção através da conexão, execução de
+        //comandos SQL e fechamentos
+        PreparedStatement preparedStatement = null;
+        //Armazenará os resultados do banco de dados
+        ResultSet result = null;
+        try {
+            //Abre uma conexão com o banco de dados
+            connection = ConnectionUtils.getConnection();
+            //Cria um statement para execução de instruções SQL
+            preparedStatement = connection.prepareStatement(sql);
+
+            //Executa a consulta SQL no banco de dados
+            result = preparedStatement.executeQuery();
+
+            //Itera por cada item do resultado
+            while (result.next()) {
+                //Se a lista não foi inicializada, a inicializa
+                if (listaMoto == null) {
+                    listaMoto = new ArrayList<Moto>();
+                }
+                //Cria uma instância de Cliente e popula com os valores do BD
+                Moto moto = new Moto();
+                
+                moto.setPlaca(result.getString("placa"));
+                moto.setModelo(result.getString("modelo"));
+                moto.setCor(result.getString("cor"));
+                moto.setEntrada(result.getTimestamp("horaE"));
+                moto.setSaida(result.getTimestamp("horaS"));
+                moto.setTipo(result.getString("tipo"));
+                
+                listaMoto.add(moto);
+            }
+        } finally {
+            //Se o result ainda estiver aberto, realiza seu fechamento
+            if (result != null && !result.isClosed()) {
+                result.close();
+            }
+            //Se o statement ainda estiver aberto, realiza seu fechamento
+            if (preparedStatement != null && !preparedStatement.isClosed()) {
+                preparedStatement.close();
+            }
+            //Se a conexão ainda estiver aberta, realiza seu fechamento
+            if (connection != null && !connection.isClosed()) {
+                connection.close();
+            }
+        }
+        //Retorna a lista de clientes do banco de dados
+        return listaMoto;
+    }
     public static Carro getCarroByPlaca(String placa) {
         Carro c = new Carro();
         try {
