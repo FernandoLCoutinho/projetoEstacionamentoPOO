@@ -62,6 +62,7 @@ public class RegistroEntrada extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Registrar Entrada de Veículo");
+        setResizable(false);
 
         labelTitulo.setText("Registro de Entrada");
 
