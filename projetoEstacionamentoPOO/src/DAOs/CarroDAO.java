@@ -102,8 +102,8 @@ public abstract class CarroDAO implements Inserivel, Alteravel {
                 carro.setPlaca(result.getString("placa"));
                 carro.setModelo(result.getString("modelo"));
                 carro.setCor(result.getString("cor"));
-                carro.setEntrada(result.getTimestamp("entrada"));
-                carro.setSaida(result.getTimestamp("saida"));
+                carro.setEntrada(result.getTimestamp("horaE"));
+                carro.setSaida(result.getTimestamp("horaS"));
                 
                 listaCarro.add(carro);
             }

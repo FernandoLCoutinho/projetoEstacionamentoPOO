@@ -15,8 +15,8 @@ public class Carro extends VeiculoGeral{
     
     private String marca;
     private String porte;
-    private Timestamp entrada;
-    private Timestamp saida;
+    private Timestamp horaE;
+    private Timestamp horaS;
     
     public String getMarca(){
         return marca;
@@ -35,18 +35,18 @@ public class Carro extends VeiculoGeral{
     }
     
     public Timestamp getEntrada() {
-        return entrada;
+        return horaE;
     }
 
     public void setEntrada(Timestamp entrada) {
-        this.entrada = entrada;
+        this.horaE = entrada;
     }
 
     public Timestamp getSaida() {
-        return saida;
+        return horaS;
     }
 
     public void setSaida(Timestamp saida) {
-        this.saida = saida;
+        this.horaS = saida;
     }
 }
