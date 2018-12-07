@@ -13,6 +13,7 @@ public class VeiculoGeral {
     private String placa;
     private String cor;
     private String modelo;
+    private String valor;
     
     public String getPlaca() {
         return placa;
@@ -37,6 +38,13 @@ public class VeiculoGeral {
     public void setModelo(String modelo) {
         this.modelo = modelo;
     }
-    
+
+    public String getValor() {
+        return valor;
+    }
+
+    public void setValor(String valor) {
+        this.valor = valor;
+    }
     
 }

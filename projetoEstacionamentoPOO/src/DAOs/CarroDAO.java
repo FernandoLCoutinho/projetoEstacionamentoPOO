@@ -16,6 +16,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -66,29 +67,61 @@ public abstract class CarroDAO implements Inserivel, Alteravel {
 
     }
 
-    public static ArrayList<Carro> listaCarro() {
-        ArrayList<Carro> listaCarro = new ArrayList<>();
+    public static List<Carro> listar()
+            throws SQLException, Exception {
+        //Monta a string de listagem de clientes no banco, considerando
+        //apenas a coluna de ativação de clientes ("enabled")
+        String sql = "SELECT * FROM veiculo";
+        //Lista de clientes de resultado
+        List<Carro> listaCarro = null;
+        //Conexão para abertura e fechamento
+        Connection connection = null;
+        //Statement para obtenção através da conexão, execução de
+        //comandos SQL e fechamentos
+        PreparedStatement preparedStatement = null;
+        //Armazenará os resultados do banco de dados
+        ResultSet result = null;
         try {
-            Connection con = new ConnectionUtils().getConnection();
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM veiculo");
+            //Abre uma conexão com o banco de dados
+            connection = ConnectionUtils.getConnection();
+            //Cria um statement para execução de instruções SQL
+            preparedStatement = connection.prepareStatement(sql);
 
-            while (rs.next()) {
-                Carro c = new Carro();
+            //Executa a consulta SQL no banco de dados
+            result = preparedStatement.executeQuery();
 
-                c.setPlaca(rs.getString("placa"));
-                c.setModelo(rs.getString("modelo"));
-                c.setMarca(rs.getString("marca"));
-                c.setPorte(rs.getString("porte"));
-                c.setEntrada(rs.getTimestamp("horaE"));
-                c.setSaida(rs.getTimestamp("horaS"));
-
-                listaCarro.add(c);
+            //Itera por cada item do resultado
+            while (result.next()) {
+                //Se a lista não foi inicializada, a inicializa
+                if (listaCarro == null) {
+                    listaCarro = new ArrayList<Carro>();
+                }
+                //Cria uma instância de Cliente e popula com os valores do BD
+                Carro carro = new Carro();
+                
+                carro.setPlaca(result.getString("placa"));
+                carro.setModelo(result.getString("modelo"));
+                carro.setCor(result.getString("cor"));
+                carro.setEntrada(result.getTimestamp("entrada"));
+                carro.setSaida(result.getTimestamp("saida"));
+                
+                listaCarro.add(carro);
             }
-
-        } catch (SQLException e) {
-            System.out.println("Erro no banco de dados " + e);
+        } finally {
+            //Se o result ainda estiver aberto, realiza seu fechamento
+            if (result != null && !result.isClosed()) {
+                result.close();
+            }
+            //Se o statement ainda estiver aberto, realiza seu fechamento
+            if (preparedStatement != null && !preparedStatement.isClosed()) {
+                preparedStatement.close();
+            }
+            //Se a conexão ainda estiver aberta, realiza seu fechamento
+            if (connection != null && !connection.isClosed()) {
+                connection.close();
+            }
         }
+        //Retorna a lista de clientes do banco de dados
         return listaCarro;
     }
 

@@ -8,6 +8,10 @@ package Telas;
 import Servicos.ServicoCarro;
 import Veiculos.Carro;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -15,7 +19,6 @@ import java.util.ArrayList;
  */
 public class TelaPrincipal extends javax.swing.JFrame {
     
-    ArrayList<Carro> lista = new ArrayList<>();
 
     /**
      * Creates new form CadastroVeiculo
@@ -35,11 +38,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        labelDiarista = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaDiarista = new javax.swing.JTable();
         botaoEntrada = new javax.swing.JButton();
         botaoSaida = new javax.swing.JButton();
+        btnpesquisar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabelaMensalista = new javax.swing.JTable();
@@ -50,22 +53,20 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Estacionamento");
 
-        labelDiarista.setText("Cliente Diarista");
-
         tabelaDiarista.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Cliente", "Telefone", "Placa", "Modelo", "Cor", "Hora de Entrada"
+                "Placa", "Modelo", "Cor", "Hora de Entrada", "Hora de Saida"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -93,37 +94,41 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        btnpesquisar.setText("Pesquisar");
+        btnpesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnpesquisarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 945, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 945, Short.MAX_VALUE)
+                        .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(362, 362, 362)
-                        .addComponent(labelDiarista)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(botaoEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(botaoSaida, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
+                        .addComponent(botaoEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(botaoSaida, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnpesquisar)
+                .addGap(440, 440, 440))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(labelDiarista)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(110, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(21, 21, 21)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnpesquisar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botaoEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botaoSaida, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -212,6 +217,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
         saida.setVisible(true);
     }//GEN-LAST:event_botaoSaidaActionPerformed
 
+    private void btnpesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnpesquisarActionPerformed
+        try {
+            pesquisar();
+            // TODO add your handling code here:
+        } catch (Exception ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnpesquisarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -247,6 +261,34 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
     }
+    
+    private void pesquisar() throws Exception{
+        
+        try {
+            List<Carro> resultado = ServicoCarro.listarCarro();
+            DefaultTableModel model
+                = (DefaultTableModel) tabelaDiarista.getModel();
+            model.setRowCount(0);
+            if (resultado != null && resultado.size() > 0){
+                for(int i = 0; i < resultado.size(); i++){
+                    Carro carro = resultado.get(i);
+                    if(carro != null){
+                        Object[] row = new Object[5];
+                        row[0] = carro.getPlaca();
+                        row[1] = carro.getModelo();
+                        row[2] = carro.getCor();
+                        row[3] = carro.getEntrada();
+                        row[4] = carro.getSaida();
+                        
+                        model.addRow(row);
+                    }
+                }
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoAlterarCliente;
@@ -254,12 +296,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton botaoExcluirCliente;
     private javax.swing.JButton botaoRegistrarCliente;
     private javax.swing.JButton botaoSaida;
+    private javax.swing.JButton btnpesquisar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JLabel labelDiarista;
     private javax.swing.JTable tabelaDiarista;
     private javax.swing.JTable tabelaMensalista;
     // End of variables declaration//GEN-END:variables
